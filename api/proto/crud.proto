@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+package mcrsv;
+
+option go_package = "./";
+
+message ProtoSetUser {
+    string username = 1;
+    string user_id = 2;
+    string password = 3;
+}
+
+message ProtoUser {
+    int32 idx = 1;
+    string username = 2;
+    string user_id = 3;
+    string password = 4;
+}
+
+message ProtoUsers {
+    ProtoUser user = 1;
+}
+
+message ProtoUserIdx {
+    int32 idx = 1;
+}
+
+message ProtoUpdateU {
+    int32 idx = 1;
+    string password = 2;
+}
+
+message ProtoResponse {
+    int32 res = 1;
+}
+
+service RpcApp {
+    rpc CreateUser(ProtoUser) returns (ProtoResponse){}
+    //rpc FindOne(ProtoUserIdx) returns (ProtoUser){}
+    //rpc FindAll() returns (Users){}
+    //rpc UpdateUser(ProtoUpdateU) returns (ProtoResponse){}
+    //rpc DeleteUser(ProtoUserIdx) returns (ProtoResponse){}
+}
